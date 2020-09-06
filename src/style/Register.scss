@@ -1,0 +1,40 @@
+@import "./variables.scss";
+//Register & Login style
+.register_wrapper,
+.login_wrapper{
+    display:flex;
+    width:40vw;
+    margin:0 5rem;
+    height:75vh;
+    border: 2px solid $primary-color;
+    border-radius: 0.4rem;
+    padding:2rem;
+    .register-form,
+    .login-form{
+        text-align: center;
+        padding-top: 1rem;
+        input{
+            margin-bottom:2rem;
+            width:80%;
+            padding:0.5rem;
+            box-sizing:border-box;
+            border: 2px solid $primary-color;
+            border-radius: 0.2rem;
+        }
+        input[type=submit]{
+            width:10rem;
+            margin-top:5rem;
+            vertical-align: middle;
+            border-radius: 0.5rem;
+            padding:1rem;
+            border: 2px solid $primary-color;
+            background-color:transparent;
+            color: #797979;
+            cursor: pointer;
+            &:hover{
+                background-color: $primary-color;
+                color:#fff;
+            }
+        }
+    }
+}

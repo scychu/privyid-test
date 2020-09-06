@@ -1,16 +1,15 @@
 import React from 'react'
 import '../style/Register.scss';
 
-export default function Register() {
+export default function Login() {
     return (
-        <div className="register_wrapper">
-            <div className="register-form">
+        <div className="login_wrapper">
+            <div className="login-form">
                 <form>
                     <input
                     name="phone"
-                    type="tel"
+                    type="number"
                     placeholder="No. Hp"
-                    pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required
                     />
                     <input
                     name="pass"
@@ -18,13 +17,8 @@ export default function Register() {
                     placeholder="Password"
                     />
                     <input
-                    name="country"
-                    type="text"
-                    placeholder="Country"
-                    />
-                    <input
                     type="submit"
-                    value="REGISTER"/>
+                    value="LOGIN"/>
                 </form>
             </div>
         </div>
