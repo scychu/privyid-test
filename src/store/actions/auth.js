@@ -1,68 +1,90 @@
 import axios from 'axios';
 import * as type from "./types";
-const URL = "http://pretest-qa.dcidev.id/documentation/v1#/"
+const URL = "https://cors-anywhere.herokuapp.com/http://pretest-qa.dcidev.id/api/v1/"
 
 export const register = (data) => async (dispatch) => {
     return axios({
+        origin:"*",
         method:"POST",
-        url:`${URL}api/v1/register`,
-        data
+        url:`${URL}register`,
+        data,
     })
     .then((res)=>{
-        alert("Register Success!Check phone for OTP");
-        console.log("then")
+        console.log(res);
+        alert("Register Success! Check phone for OTP");
+        console.log(data)
         localStorage.setItem('phone',data.phone)
         window.location = "/verification"
         return true
     })
-    .catch((err)=>{
-        console.log("err",err)
-        alert("Register failed!");
-        localStorage.setItem('phone',data.phone)
-        window.location = "/verification"
+    .catch((error)=>{
+        console.log(error.message);
+        // alert("Register failed!");
         return false
     })
 };
 
 export const login = (data) => async (dispatch) => {
     return axios({
+        origin:"*",
         method:"POST",
-        url:`${URL}api/v1/oauth/sign_in`,
+        url:`${URL}oauth/sign_in`,
         data
     })
     .then((res)=>{
+        // console.log(res)
         alert("Login Success!");
-        console.log("then")
         localStorage.setItem('phone',data.phone)
+        localStorage.setItem('access_token',res.data.data.user.access_token)
         window.location = "/dashboard"
+        dispatch({
+            type:type.LOGIN_SUCCESS,
+            data:res.data.data.user
+        })
+        // return axios({
+        //     method: "POST",
+        //     url:`${URL}register/otp/request`,
+        //     data
+        //   })
         return true
     })
     .catch((err)=>{
         console.log("err",err)
         alert("Login failed!");
-        localStorage.setItem('phone',data.phone)
-        window.location = "/dashboard"
-
         return false
     })
 }
 
 
-export const verificationRequest = () => async (dispatch) => {
-    let data = localStorage.getItem('phone')
-    try {
-        const res = await axios.post(`${URL}api/v1/register/otp/request`, data);
-        if (res.status === 201) {
-        //   alert("Register Success!", "Please Check your email to verify your account!");
-        console.log("verif  done")
-        window.location = "/dashboard"
-        } 
-        else if (res.status !== 201) {
-          localStorage.removeItem("token", res.data.data.token)
-          alert(`${res}`)
-          console.log("failed")
-        }
-      } catch (err) {
-        console.log(`${err}`)
-      }
+export const verificationRequest = (data) => async (dispatch) =>{
+    return (dispatch) => {
+        axios({
+          method: "POST",
+          url:`${URL}register/otp/request`,
+          data
+        })
+        .then((res) => {
+          console.log("aaa",res)
+          
+        })
+        .catch((err) => {
+          console.log(err, "ERROR");
+        });
+      };
+}
+export const verificationMatch = (data) => async (dispatch) =>{
+    return (dispatch) => {
+        axios({
+          method: "POST",
+          url:`${URL}register/otp/match`,
+          data
+        })
+        .then((res) => {
+          console.log(res)
+          
+        })
+        .catch((err) => {
+          console.log(err, "ERROR");
+        });
+      };
 }

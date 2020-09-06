@@ -11,15 +11,23 @@ export default function Register() {
 
     const handleSubmit = async (e)=>{
         e.preventDefault();
-        const user = {
-            phone,
-            password,
-            country,
-            latlong:"-0.789275",
-            device_token:"1",
-            device_type:2
-        };
-        await dispatch(register(user));
+        let data = new FormData();
+        data.append('phone',phone)
+        data.append('password',password)
+        data.append('country',country)
+        data.append('latlong',"-0.789275")
+        data.append('device_token',"1")
+        data.append('device_type',2)
+
+        // const user = {
+        //     phone,
+        //     password,
+        //     country,
+        //     latlong:"-0.789275",
+        //     device_token:"1",
+        //     device_type:2
+        // };
+        await dispatch(register(data));
     }
     return (
         <div className="register_wrapper">

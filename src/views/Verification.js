@@ -1,42 +1,60 @@
-import React,{useEffect,useState} from 'react'
+import React,{useEffect} from 'react'
 import '../style/Verification.scss';
 import {useDispatch} from 'react-redux';
-
-import {verificationRequest} from '../store/actions/auth';
+import {verificationRequest,verificationMatch} from '../store/actions/auth';
 
 export default function Verification() {
+    const phone = localStorage.getItem('phone')
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(verificationRequest());
+        dispatch(verificationRequest(phone));
        },[dispatch]);
-    
+
+    const sendOTP = (e)=>{
+        e.preventDefault()
+        console.log("send")
+        const data ={
+            user_id:"",
+            otp_code:""
+        }
+        dispatch(verificationMatch(data));
+    }
+    const resendOTP = (e)=>{
+        e.preventDefault()
+
+        console.log("resend")
+    }
 
     return (
         <div className="verfication_wrapper">
             <div className="verfication-form">
-                <form>
+                <form onSubmit={sendOTP}>
                     <input
                     type="text"
-                    placeholder="-"
+                    maxLength = "1"
+                    placeholder="0"
                     />
                     <input
                     type="text"
-                    placeholder="-"
+                    maxLength = "1"
+                    placeholder="0"
                     />
                     <input
                     type="text"
-                    placeholder="-"
+                    maxLength = "1"
+                    placeholder="0"
                     />
                     <input
                     type="text"
-                    placeholder="-"
-                    />  
+                    maxLength = "1"
+                    placeholder="0"
+                    />
                     <input
                     type="submit"
                     value="Verifikasi"
                     />
                 </form>        
-                    <a href="#">Kirim ulang kode verifikasi</a>
+                    <button onClick={resendOTP}>Kirim ulang kode verifikasi</button>
             </div>
         </div>
     )
