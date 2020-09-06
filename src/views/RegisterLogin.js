@@ -8,10 +8,10 @@ import Dashboard from './Dashboard';
 export default function RegisterLogin() {
     return (
         <div className="register-login_container">
-            {/* <Register/>
-            <Login/> 
-            <Verification/> */}
-            <Dashboard/>
+            <Register/>
+            <Login/>
+            {/* <Verification/> */}
+            {/* <Dashboard/> */}
 
         </div>
     )

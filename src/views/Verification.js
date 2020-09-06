@@ -1,7 +1,16 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import '../style/Verification.scss';
+import {useDispatch} from 'react-redux';
+
+import {verificationRequest} from '../store/actions/auth';
 
 export default function Verification() {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(verificationRequest());
+       },[dispatch]);
+    
+
     return (
         <div className="verfication_wrapper">
             <div className="verfication-form">

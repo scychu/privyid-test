@@ -7,7 +7,7 @@ export default function Dashboard() {
         <div className='dashboard-wrapper'>
             <div className="dashboard">
                 <div className="profile-picture">
-                    <img src={ava} alt="avatar-picture"/>
+                    <img src={ava} alt="avatar"/>
                 </div>
                 <div className="profile-details">
                     <button>Edit Foto Profil</button>
