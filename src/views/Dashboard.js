@@ -9,8 +9,6 @@ export default function Dashboard() {
     const dispatch = useDispatch();
     const token = localStorage.getItem('access_token');
     const user = useSelector(state => state.auth.user)
-    console.log(user,"user")
-    // console.log(user.career.company_name,"career")
 
     useEffect(() => {
         dispatch(getUser(token));
@@ -18,15 +16,11 @@ export default function Dashboard() {
 
     const deleteAccount =()=>{
         console.log("bye")
-        
     }
+
     const [modalEduOpen, setModalEduOpen] = useState(false);
     const editEdu =()=>{
         setModalEduOpen(true);
-        // let data = new FormData();
-        // data.append('school_name',)
-        // data.append('graduation_time',"")
-        // dispatch(editEdu(data));
         console.log("edit")
     }
     return (

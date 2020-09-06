@@ -35,17 +35,15 @@ export const editEdu = (data) => async (dispatch) => {
     })
     .then((res)=>{
         console.log('ok')
-        console.log(res)
+        // console.log(res.data)
         dispatch({
             type:type.EDIT_EDU,
-            // user:res.data.data.user
+            user:res.data.data.user
         })
         return true
     })
     .catch((err)=>{
         console.log('oh no')
-        console.log('oh no')
-
         return false
     })
 }

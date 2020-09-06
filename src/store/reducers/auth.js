@@ -1,6 +1,7 @@
 import {
     LOGIN_SUCCESS,
-    GET_USER
+    GET_USER,
+    EDIT_EDU
   } from "../actions/types";
   // import state from "sweetalert/typings/modules/state";
   
@@ -12,21 +13,26 @@ import {
   
   
   const auth = (state = initialState, action) => {
-    const {type,data,user} = action;
+    const {type,data,user,payload} = action;
     switch (type) {
       default:
         return {
           ...state,
         };
       case LOGIN_SUCCESS: 
-          return {
-            ...state,
-            data:data
-          }
+        return {
+          ...state,
+          data:data
+        }
       case GET_USER: 
+        return {
+          ...state,
+          user:user
+        }
+      case EDIT_EDU: 
       return {
         ...state,
-        user:user
+        data:payload
       }
     }
   };

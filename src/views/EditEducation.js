@@ -12,7 +12,11 @@ export default function EditEducation(props) {
         school_name: "",
         graduation_time: "",
       }
-
+      const toggleModalOpen = () => {
+        setModalEduOpen(!modalOpen);
+    
+      };
+    
       const submitEdu = async(e)=>{
         e.preventDefault()
         let data = new FormData();
@@ -20,18 +24,20 @@ export default function EditEducation(props) {
         let time = document.getElementById('time').value;
         data.append('graduation_time',time)
         data.append('school_name',school_name)
-        // if(school_name && time){
-            // const res = await dispatch(editEdu(data))
-            // setModalEduOpen(false);
-        // }
-        dispatch(editEdu(data))
-        console.log("edit")
+        if(school_name&&time){
+            const res = await dispatch(editEdu(data))
+            if(res){
+                setModalEduOpen(false);
+            }else {
+                console.log("gagal")
+            }
+        }
     }
       
     return (
         <div className="modal-wrapper">
             <div className="modal-inner">
-                <h3>X</h3>
+                <h3 onClick={() => toggleModalOpen()}>X</h3>
                 <div className="container">
                     <form onSubmit={submitEdu}>
                         <label>School Name:</label>
