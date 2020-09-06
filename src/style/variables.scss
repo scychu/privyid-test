@@ -1,7 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
 
 $primary-color:#C0C0C0;
+$second-color: #797979;
 
+@mixin button {
+  width:10rem;
+  vertical-align: middle;
+  border-radius: 0.5rem;
+  padding:1rem;
+  border: 2px solid $primary-color;
+  background-color:transparent;
+  color: $second-color;
+  cursor: pointer;
+  &:hover{
+      background-color: $primary-color;
+      color:#fff;
+  }
+}
 html,
 body {
   font-size: 16px;
@@ -17,17 +32,15 @@ h2,
 h3,
 h4 {
   font-weight: 700;
-  color:$primary-color;
+  
 }
 
 h5,
 h6,
 p {
   font-weight: 400;
-  color:$primary-color;
 }
 
 li {
   list-style: none;
-  color:$primary-color;
 }

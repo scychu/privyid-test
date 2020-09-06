@@ -1,0 +1,32 @@
+@import "./variables.scss";
+//Verification style
+
+.verfication_wrapper{
+    display:flex;
+    margin:0 5rem;
+    height:75vh;
+    width:40vw;
+    border: 2px solid $primary-color;
+    border-radius: 0.4rem;
+    padding:2rem;
+    margin:auto;
+    text-align: center;
+    input[type=text]{
+        padding:1rem;
+        margin:2rem;
+        width:2rem;
+        vertical-align: middle;
+    }
+    input[type=submit]{
+        @include button;
+        margin:2rem;
+    }
+    a{
+        display:block;
+        color:$second-color;
+        text-decoration:none;
+        &:hover{
+            text-decoration:underline;
+        }
+    }
+}

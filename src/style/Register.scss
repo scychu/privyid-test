@@ -24,17 +24,18 @@
         input[type=submit]{
             width:10rem;
             margin-top:5rem;
-            vertical-align: middle;
-            border-radius: 0.5rem;
-            padding:1rem;
-            border: 2px solid $primary-color;
-            background-color:transparent;
-            color: #797979;
-            cursor: pointer;
-            &:hover{
-                background-color: $primary-color;
-                color:#fff;
-            }
+            @include button;
+            // vertical-align: middle;
+            // border-radius: 0.5rem;
+            // padding:1rem;
+            // border: 2px solid $primary-color;
+            // background-color:transparent;
+            // color: $second-color;
+            // cursor: pointer;
+            // &:hover{
+            //     background-color: $primary-color;
+            //     color:#fff;
+            // }
         }
     }
 }
